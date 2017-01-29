@@ -1,4 +1,7 @@
-Name:           python2-fujian
+%global _basename fujian
+
+
+Name:           python2-%{_basename}
 Version:        1.1.1
 Release:        1
 Summary:        An HTTP server that executes Python code.
@@ -6,7 +9,7 @@ Summary:        An HTTP server that executes Python code.
 Group:          Applications/Multimedia
 License:        AGPLv3+
 URL:            https://goldman.ncodamusic.org/diffusion/FJ/
-Source0:        fujian-%{version}.tar.gz
+Source0:        %{_basename}-%{version}.tar.gz
 
 BuildArch:      noarch
 
@@ -34,7 +37,7 @@ Fujian already supports Python 3, and we will add support for PyPy3 when the tim
 
 
 %prep
-%autosetup -n fujian-%{version}
+%autosetup -n %{_basename}-%{version}
 
 
 %build
@@ -52,7 +55,7 @@ PYTHONPATH=%{buildroot}%{python2_sitelib} py.test
 %files
 %license LICENSE
 %doc README.rst
-%{python2_sitelib}/fujian/
+%{python2_sitelib}/%{_basename}/
 %{python2_sitelib}/Fujian-%{version}-py2.7.egg-info/
 
 
