@@ -1,5 +1,3 @@
-# TODO: get the tests to run (requires "eventlet")
-
 %global _basename signalslot
 
 
@@ -17,6 +15,8 @@ BuildArch:      noarch
 
 BuildRequires:  python2-contexter
 BuildRequires:  python2-devel
+BuildRequires:  python2-eventlet
+BuildRequires:  python2-mock
 BuildRequires:  python2-pytest
 BuildRequires:  python-pytest-cov
 BuildRequires:  python-pytest-pep8
@@ -46,8 +46,8 @@ Rationale against Signal/Slot is detailed in the “Pattern” section of the do
 %py2_build
 
 
-# %check
-# PYTHONPATH=%{buildroot}%{python2_sitelib} py.test
+%check
+PYTHONPATH=%{buildroot}%{python2_sitelib} py.test build
 
 
 %install
@@ -61,5 +61,8 @@ Rationale against Signal/Slot is detailed in the “Pattern” section of the do
 
 
 %changelog
+* Sun Jan 29 2017 Christopher Antila <christopher.antila@ncodamusic.org> - 0.1.1-2
+- Test suite works.
+
 * Sun Jan 29 2017 Christopher Antila <christopher.antila@ncodamusic.org> - 0.1.1-1
 - Initial packaging.
