@@ -16,12 +16,14 @@ Source0:        abjad-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python2-devel
+BuildRequires:  python-enum34
 BuildRequires:  python2-mock
+BuildRequires:  python2-ply
 BuildRequires:  python2-pytest
+BuildRequires:  python-six
 
 Requires:       lilypond
 Requires:       python-enum34
-Requires:       python2-pathlib2
 Requires:       python2-ply
 Requires:       python-six
 
@@ -63,6 +65,9 @@ rm -R abjad/boilerplate
 
 
 %changelog
+* Sun Jan 29 2017 Christopher Antila <christopher.antila@ncodamusic.org> - 2.17-3
+- Remove "requires" on python2-pathlib2.
+
 * Sun Jan 29 2017 Christopher Antila <christopher.antila@ncodamusic.org> - 2.17-2
 - Add "requires" on LilyPond.
 
