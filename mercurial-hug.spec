@@ -1,12 +1,8 @@
-# %{!?python_sitelib: %global python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
-
-
 Name:           mercurial-hug
-Version:        0.4.2
-Release:        2
-Summary:        A music management program
+Version:        0.4.3
+Release:        1
+Summary:        A wrapper for select Mercurial functionality.
 
-Group:          Applications/Multimedia
 License:        GPLv3+
 URL:            https://goldman.ncodamusic.org/diffusion/HUG/
 Source0:        %{name}-%{version}.tar.gz
@@ -32,29 +28,34 @@ also to provide a stable API. To achieve this, we will implement *only* the func
 and if you ask nicely we might also implement the functionality you need too.
 
 
-
 %prep
 %autosetup
 
 
 %build
-/usr/bin/python2 setup.py build
+%py2_build
 
 
 %check
-PYTHONPATH=%{buildroot}%{python_sitelib} py.test
+PYTHONPATH=%{buildroot}%{python2_sitelib} py.test tests
 
 
 %install
-/usr/bin/python2 setup.py install --root=%{buildroot} --prefix=%{_prefix}
+%py2_install
 
 
 %files
-/usr/lib/python2.7/site-packages/hug
-/usr/lib/python2.7/site-packages/mercurial_hug-%{version}-py2.7.egg-info
+%license LICENSE
+%doc README.rst
+%{python2_sitelib}/hug
+%{python2_sitelib}/mercurial_hug-%{version}-py2.7.egg-info
 
 
 %changelog
+* Sat Feb 4 2017 Christopher Antila <chrisotpher@ncodamusic.org> - 0.4.3-1
+- Upgrade to release 0.4.3.
+- Improve the specfile.
+
 * Wed May 25 2016 Christopher Antila <christopher@ncodamusic.org> - 0.4.2-2
 - Modify "files" section so, you know, Fedora.
 
