@@ -6,7 +6,7 @@
 
 Name:           python2-%{_basename}
 Version:        0.5.3
-Release:        1
+Release:        2
 Summary:        Lychee is an engine for MEI document management and conversion.
 
 Group:          Applications/Multimedia
@@ -27,7 +27,7 @@ BuildRequires:  python2-pytest
 Requires:       mercurial-hug > 0.4
 Requires:       python2-abjad == 2.17
 Requires:       python2-grako >= 3.14
-Requires:       python2-lithoxyl == 0.4
+Requires:       python2-lithoxyl >= 0.4
 Requires:       python2-signalslot
 
 %if 0%{?fedora} >= 25
@@ -69,5 +69,8 @@ grako -c -o lychee/converters/inbound/lilypond_parser.py lychee/converters/inbou
 
 
 %changelog
+* Sat Feb 4 2017 Christopher Antila <christopher.antila@ncodamusic.org> - 0.5.3-2
+- Fix the "requires" on Lithoxyl.
+
 * Sun Jan 29 2017 Christopher Antila <christopher.antila@ncodamusic.org> - 0.5.3-1
 - Initial packaging.
