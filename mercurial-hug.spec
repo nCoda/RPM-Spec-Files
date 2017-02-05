@@ -9,7 +9,7 @@ Source0:        %{name}-%{version}.tar.gz
 
 BuildArch:      noarch
 
-BuildRequires:  python >= 2.7
+BuildRequires:  python-devel
 BuildRequires:  pytest
 BuildRequires:  mercurial >= 3
 
